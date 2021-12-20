@@ -1,3 +1,4 @@
+from Assignments.Ex3.src.My_Geolocation import My_Geolocarion
 from Geolocation import Geolocation
 from NodeData import NodeData
 
@@ -6,25 +7,17 @@ from NodeData import NodeData
 class My_NodeData(NodeData, Geolocation):
 
 
-    def __init__(self):
-        self.setlocation(self)
-        self.tag = 0
-        #key = id
-        self.key = 0
-        self.info = ""
-        self.Tag_ =0
-        self.Weight = 0.0
-        self.prev = 0
 
-    def __int__(self, o=NodeData):
-        self.setlocation(self)
+    def __init__(self, o=NodeData):
+        self.location = o.getlocation
         self.tag = o.getTag
         # key = id
         self.key = o.getkey
         self.info = o.getInfo
         self.Tag_ = o.getTag
         self.Weight = o.getWeight
-        self.prev = o.getPrev()
+        self.prev = o.getPrev
+
 
     def getkey(self) -> int:
         return super().getkey()
@@ -52,6 +45,23 @@ class My_NodeData(NodeData, Geolocation):
 
     def setInfo(self, str) -> None:
         super().setInfo(str)
+
+    def __str__(self) -> str:
+        s = "------ Node #" + str (self.key) + " ------\n" +\
+            "   - Info = " + self.info + "   -Wight  " +str (self.getWeight)
+
+        return s
+
+    def __repr__(self) -> str:
+        s = "------ Node #" + str(self.key) + " ------\n" + \
+            "   - Info = " + self.info + "   -Wight  " + str(self.getWeight)
+
+        return s
+
+    def __eq__(self, o: object) -> bool:
+        return super().__eq__(o)
+
+
 
 
 

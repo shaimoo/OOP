@@ -3,7 +3,6 @@ class Geolocation:
        This interface represents a geo location <x,y,z>, (aka Point3D data).
     """
 
-
     def getX(self) -> float :
         """
         :return:
