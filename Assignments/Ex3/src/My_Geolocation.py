@@ -1,6 +1,6 @@
 import math
 
-from Assignments.Ex3.src.Geolocation import Geolocation
+from Geolocation import Geolocation
 
 
 class My_Geolocarion(Geolocation):
@@ -15,3 +15,15 @@ class My_Geolocarion(Geolocation):
         dis = math.sqrt(self.getX()**2-Geolocation.getX()**2 + self.getY()**2-Geolocation.getY()**2
                       + self.getZ()**2-Geolocation.getZ()**2)
         return dis
+
+    def getX(self) -> float:
+        return super().getX()
+
+    def getY(self) -> float:
+        return super().getY()
+
+    def getZ(self) -> float:
+        return super().getZ()
+
+    def setXYZ(self, *args) -> None:
+        super().setXYZ(*args)

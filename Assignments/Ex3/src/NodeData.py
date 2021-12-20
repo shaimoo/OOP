@@ -52,3 +52,11 @@ class NodeData:
                 :param int:
                 :return: None
                 """
+    def setPrev(self, int ) -> None:
+        """
+        this represent father
+        """
+    def getPrev(self) -> int:
+        """
+        return prev
+        """
