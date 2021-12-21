@@ -15,9 +15,12 @@ class DiGraph(GraphInterface):
          self.edges_out = dict(dict)
          self.MC = 0
 
-     def v_size(self) -> int:
 
+
+     def v_size(self) -> int:
         return len(self.vertesis)
+
+
      def get_all_v(self) -> dict:
         return self.vertesis
 
