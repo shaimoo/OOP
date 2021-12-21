@@ -2,12 +2,17 @@ from EdgeData import EdgeData
 
 class My_EdgeData(EdgeData):
 
-     def __init__(self , o = EdgeData):
+     def __init__(self ,src,dest,weight, o = EdgeData):
+         if(EdgeData!=None):
           self.Src=o.getSrc
           self.Dest=o.getDest
           self.Weight=o.getWeight
           self.Info=o.getInfo
           self.Tag=o.getTag
+         else :
+          self.Src = src
+          self.Dest = dest
+          self.weight = weight
 
 
      def getSrc(self) -> int:
