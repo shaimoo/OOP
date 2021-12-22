@@ -7,7 +7,6 @@ from NodeData import NodeData
 class My_NodeData(NodeData, Geolocation):
 
 
-
     def __init__(self, o=NodeData):
         self.location = o.getlocation
         self.tag = o.getTag
