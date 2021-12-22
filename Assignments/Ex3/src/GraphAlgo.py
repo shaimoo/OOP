@@ -9,11 +9,37 @@ from My_NodeData import My_NodeData
 
 
 class GraphAlgo(GraphAlgoInterface):
+    """""
+    Stack < NodeData > s = new
+    Stack < NodeData > ();
+    NodeData
+    t = this.g.getNode(key);
+    s.push(t);
+    t.setTag(1); // each and evrynode if visited
+    while (!s.isEmpty()) {
+    t = s.pop();
+    Iterator < EdgeData > e = this.g.edgeIter(t.getKey());
+    while (e.hasNext()) {
+    EdgeData ed = e.next();
+    // checking on neiighobs
+    if (this.g.getNode(ed.getDest()).getTag() != 1) {// check if visited
+    this.g.getNode(ed.getDest()).setTag(1); // set as visited
+    s.push(this.g.getNode(ed.getDest()));
+    """"
 
-    def DFS(param):
-
-        pass
-
+    def DFS(self,param:int):
+       stack = []
+       t=self.graph.get_v(param)
+       stack.append(t)
+       t.setTag(1)
+       while stack.__sizeof__()>0:
+            t=stack.pop()
+            Iterator =self.graph.all_in_edges_of_node(t.key).__iter__()
+            while not Iterator == None:
+                ed =Iterator.__next__()
+                if self.graph.get_v(ed.getDest().getTag()) != 1 :
+                    self.graph.get_v(ed.getDest().setTag(1))
+                stack.append(self.graph.get_v(ed.getDest()))
 
     def __init__(self,o=DiGraph):
 
@@ -32,7 +58,7 @@ class GraphAlgo(GraphAlgoInterface):
         iterate_node = self.graph.get_all_v().__iter__()
         while iterate_node:
               g = My_NodeData(iterate_node.__next__())
-              self.DFS(self, g.getkey())
+              self.DFS(g.getkey())
               iterate_node2 = self.graph.get_all_v().__iter__()
               while iterate_node2:
                   g  = iterate_node2.__next__()

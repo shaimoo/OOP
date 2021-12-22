@@ -3,7 +3,7 @@ from Geolocation import Geolocation
 from EdgeData import EdgeData
 from  My_EdgeData import My_EdgeData
 from My_Geolocation import My_Geolocarion
-
+from My_NodeData import My_NodeData
 from GraphInterface import GraphInterface
 
 class DiGraph(GraphInterface):
@@ -15,7 +15,8 @@ class DiGraph(GraphInterface):
          self.edges_out = dict(dict)
          self.MC = 0
 
-
+     def get_v(self,key) -> My_NodeData:
+        return self.vertesis[key]
 
      def v_size(self) -> int:
         return len(self.vertesis)
