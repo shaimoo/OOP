@@ -3,24 +3,23 @@ from Geolocation import Geolocation
 from NodeData import NodeData
 
 
+class My_NodeData(NodeData):
 
-class My_NodeData(NodeData, Geolocation):
-
-
-    def __init__(self, o=NodeData, location=My_Geolocarion ,key = int):
+    def __init__(self, key=int,t=tuple, o=NodeData):
         if o == None:
-            self.location=location
-            self.key=key
+            self.key = key
+        if key == None:
+            self.location = t
+
         else:
-            self.location = o.getlocation
             self.tag = o.getTag
+            self.location = o.getlocation
             # key = id
             self.key = o.getkey
             self.info = o.getInfo
             self.Tag_ = o.getTag
             self.Weight = o.getWeight
             self.prev = o.getPrev
-
 
     def getkey(self) -> int:
         return super().getkey()
@@ -50,8 +49,8 @@ class My_NodeData(NodeData, Geolocation):
         super().setInfo(str)
 
     def __str__(self) -> str:
-        s = "------ Node #" + str (self.key) + " ------\n" +\
-            "   - Info = " + self.info + "   -Wight  " +str (self.getWeight)
+        s = "------ Node #" + str(self.key) + " ------\n" + \
+            "   - Info = " + self.info + "   -Wight  " + str(self.getWeight)
 
         return s
 
@@ -63,8 +62,3 @@ class My_NodeData(NodeData, Geolocation):
 
     def __eq__(self, o: object) -> bool:
         return super().__eq__(o)
-
-
-
-
-

@@ -12,8 +12,8 @@ class DiGraph(GraphInterface):
     def __init__(self):
         self.EdgeSize = 0
         self.vertesis = {}
-        self.edges_in = dict[dict]
-        self.edges_out = dict[dict]
+        self.edges_in:[int,dict] = dict()
+        self.edges_out:[int,dict] = dict()
         self.MC = 0
 
     def get_v(self, key) -> My_NodeData:
@@ -55,10 +55,11 @@ class DiGraph(GraphInterface):
             return True
 
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
-        if self.vertesis[node_id]:
+        if self.vertesis.get(node_id):
             return False
         else:
-            self.vertesis[node_id].append(My_Geolocarion(pos))
+            #arr[k] = 5
+            self.vertesis[node_id] =My_NodeData(pos)
             self.MC += 1
             return True
 
