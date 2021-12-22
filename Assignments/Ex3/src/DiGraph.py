@@ -12,8 +12,8 @@ class DiGraph(GraphInterface):
     def __init__(self):
         self.EdgeSize = 0
         self.vertesis = {}
-        self.edges_in = dict(dict)
-        self.edges_out = dict(dict)
+        self.edges_in = dict[dict]
+        self.edges_out = dict[dict]
         self.MC = 0
 
     def get_v(self, key) -> My_NodeData:

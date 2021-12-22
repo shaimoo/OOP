@@ -7,15 +7,19 @@ from NodeData import NodeData
 class My_NodeData(NodeData, Geolocation):
 
 
-    def __init__(self, o=NodeData):
-        self.location = o.getlocation
-        self.tag = o.getTag
-        # key = id
-        self.key = o.getkey
-        self.info = o.getInfo
-        self.Tag_ = o.getTag
-        self.Weight = o.getWeight
-        self.prev = o.getPrev
+    def __init__(self, o=NodeData, location=My_Geolocarion ,key = int):
+        if o == None:
+            self.location=location
+            self.key=key
+        else:
+            self.location = o.getlocation
+            self.tag = o.getTag
+            # key = id
+            self.key = o.getkey
+            self.info = o.getInfo
+            self.Tag_ = o.getTag
+            self.Weight = o.getWeight
+            self.prev = o.getPrev
 
 
     def getkey(self) -> int:

@@ -6,8 +6,11 @@ from Geolocation import Geolocation
 class My_Geolocarion(Geolocation):
 
 
-    def __init__(self, o=Geolocation): ##maybe if end else needed
-        self.setXYZ(o.getX, o.getY, o.getZ)
+    def __init__(self, o=Geolocation,x=int ,y=int ,z=int ): ##maybe if end else needed
+       if o==None:
+             self.setXYZ(x,y,z)
+       else:
+             self.setXYZ(o.getX, o.getY, o.getZ)
 
     def Distance(self, Geolocation) -> float:
         dis = math.sqrt(self.getX()**2-Geolocation.getX()**2 + self.getY()**2-Geolocation.getY()**2
