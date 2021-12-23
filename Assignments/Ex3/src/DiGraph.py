@@ -10,7 +10,6 @@ from GraphInterface import GraphInterface
 class DiGraph(GraphInterface):
 
     def __init__(self):
-
         self.EdgeSize = 0
         self.vertesis = {}
         self.edges_in = {}
@@ -41,26 +40,26 @@ class DiGraph(GraphInterface):
 
     def add_edge(self, id1: int, id2: int, weight: float) -> bool:
 
-        if self.edges_in.__contains__(id1):
+        if self.edges_in[id1]:
             return False
 
-        if not self.vertesis.__contains__(id1) or not self.vertesis.__contains__(id2):
+        if not self.vertesis[id1] or not self.vertesis[id2]:
             return False
         else:
-            edge = My_EdgeData(id1, id2, weight)
-            edge2 = My_EdgeData(id2, id1, weight)
-            self.edges_in.get(id1).update({id2,edge})
-            self.edges_out[id2].append({id1, edge2})
+
+            self.edges_in[id1][id2] = weight
+            self.edges_out[id2][id1] = weight
             self.MC += 1
             self.EdgeSize += 1
             return True
 
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
-        if self.vertesis not in node_id:
+        if self.vertesis.get(node_id):
             return False
         else:
             #arr[k] = 5
-            self.vertesis[node_id] ={}
+            self.vertesis[node_id] =My_NodeData(pos)
+            self.edges_in[node_id] = {}
             self.MC += 1
             return True
 
