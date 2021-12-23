@@ -2,57 +2,53 @@ from EdgeData import EdgeData
 
 class My_EdgeData(EdgeData):
 
-     def __init__(self ,src,dest,weight, o = EdgeData):
-         if(EdgeData!=None):
-          self.Src=o.getSrc
-          self.Dest=o.getDest
-          self.Weight=o.getWeight
-          self.Info=o.getInfo
-          self.Tag=o.getTag
-         else :
-          self.Src = src
-          self.Dest = dest
-          self.weight = weight
+     def __init__(self ,src:int,dest:int,weight:float):
+
+          self.Src=src
+          self.Dest=dest
+          self.Weight=weight
+          self.Info=""
+          self.Tag=-1
 
 
      def getSrc(self) -> int:
-          return super().getSrc()
+          return self.Src
 
      def getDest(self) -> int:
-          return super().getDest()
+          return self.Dest
 
      def getWeight(self) -> float:
-          return super().getWeight()
+          return self.Weight
 
      def getInfo(self) -> str:
-          return super().getInfo()
+          return self.Info
 
-     def setInfo(self, str) -> None:
-          super().setInfo(str)
+     def setInfo(self, x:str) -> None:
+          self.Info=x
 
      def getTag(self) -> int:
-          return super().getTag()
+          return self.Tag
 
-     def setTag(self, int) -> None:
-          super().setTag(int)
+     def setTag(self, x:int) -> None:
+          self.Tag=x
 
      def __str__(self) -> str:
         return "Our_Proj._EdgeData{" +\
-          "Src=" + str(self.getSrc) +\
-          ", Dest=" + str(self.getDest) +\
-          ", Weight=" + str(self.getWeight) +\
+          "Src=" + str(self.getSrc()) +\
+          ", Dest=" + str(self.getDest()) +\
+          ", Weight=" + str(self.getWeight()) +\
           ", Info='" + str(self.getInfo()) + '\'' +\
-          ", Tag=" + str(self.getTag) +\
+          ", Tag=" + str(self.getTag()) +\
           '}'
 
 
      def __repr__(self) -> str:
           return "Our_Proj._EdgeData{" + \
-          "Src=" + str(self.getSrc) + \
-            ", Dest=" + str(self.getDest) + \
-            ", Weight=" + str(self.getWeight) + \
+          "Src=" + str(self.getSrc()) + \
+            ", Dest=" + str(self.getDest()) + \
+            ", Weight=" + str(self.getWeight()) + \
             ", Info='" + str(self.getInfo()) + '\'' + \
-            ", Tag=" + str(self.getTag) + \
+            ", Tag=" + str(self.getTag()) + \
             '}'
 
 

@@ -12,7 +12,7 @@ class DiGraph(GraphInterface):
     def __init__(self):
         self.EdgeSize = 0
         self.vertesis = {}
-        self.edges_in:[int,dict] = dict()
+        self.edges_in=dict(key=0,value=dict(key=0,value=My_EdgeData(0,0,0.0)))
         self.edges_out:[int,dict] = dict()
         self.MC = 0
 
@@ -40,15 +40,15 @@ class DiGraph(GraphInterface):
 
     def add_edge(self, id1: int, id2: int, weight: float) -> bool:
 
-        if self.edges_in[id1]:
+        if self.edges_in.__contains__(id1):
             return False
 
-        if not self.vertesis[id1] or not self.vertesis[id2]:
+        if not self.vertesis.__contains__(id1) or not self.vertesis.__contains__(id2):
             return False
         else:
             edge = My_EdgeData(id1, id2, weight)
             edge2 = My_EdgeData(id2, id1, weight)
-            self.edges_in[id1].append({id2, edge})
+            self.edges_in[id1].apped
             self.edges_out[id2].append({id1, edge2})
             self.MC += 1
             self.EdgeSize += 1

@@ -8,12 +8,12 @@ class NodeData:
         return the key of the node
         """
 
-    def getlocation(self) -> Geolocation:
+    def getlocation(self) -> tuple:
         """
         return the location of the node
         """
 
-    def setlocation(self, Geolocation) -> None:
+    def setlocation(self, tuple) -> None:
         """
         change the location of the node
         return:None

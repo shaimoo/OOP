@@ -1,9 +1,8 @@
 from unittest import TestCase
 
-from src.DiGraph import DiGraph
-from src.My_EdgeData import My_EdgeData
-
-from src.My_NodeData import My_NodeData
+from Assignments.Ex3.src.DiGraph import DiGraph
+from Assignments.Ex3.src.My_EdgeData import My_EdgeData
+from Assignments.Ex3.src.My_NodeData import My_NodeData
 
 
 class TestDiGraph(TestCase):

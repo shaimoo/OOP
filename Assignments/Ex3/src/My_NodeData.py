@@ -5,48 +5,41 @@ from NodeData import NodeData
 
 class My_NodeData(NodeData):
 
-    def __init__(self, key=int,t=tuple, o=NodeData):
-        if o == None:
+    def __init__(self, key=int , t=tuple):
             self.key = key
-        if key == None:
             self.location = t
-
-        else:
-            self.tag = o.getTag
-            self.location = o.getlocation
-            # key = id
-            self.key = o.getkey
-            self.info = o.getInfo
-            self.Tag_ = o.getTag
-            self.Weight = o.getWeight
-            self.prev = o.getPrev
+            self.prev = -1
+            self.Weight=-1
 
     def getkey(self) -> int:
-        return super().getkey()
+        x=int(self.key)
+        return x
 
-    def getlocation(self) -> Geolocation:
-        return super().getlocation()
+    def getlocation(self) -> tuple:
+        x=tuple(self.location)
+        return x
 
-    def setlocation(self, Geolocation) -> None:
-        super().setlocation(Geolocation)
+    def setlocation(self,tuple) -> None:
+        self.location= tuple
 
     def getWeight(self) -> float:
-        return super().getWeight()
+        x=float(self.Weight)
+        return x
 
-    def setPrev(self, int) -> None:
-        super().setPrev(int)
+    def setPrev(self, x: int) -> None:
+        self.prev= x
 
     def getPrev(self) -> int:
-        return super().getPrev()
+        return self.prev
 
-    def setWeight(self, float) -> None:
-        super().setWeight(float)
+    def setWeight(self, x:float) -> None:
+        self.Weight = x
 
     def getInfo(self) -> str:
-        return super().getInfo()
+        return self.info
 
-    def setInfo(self, str) -> None:
-        super().setInfo(str)
+    def setInfo(self, x:str) -> None:
+        self.info=x
 
     def __str__(self) -> str:
         s = "------ Node #" + str(self.key) + " ------\n" + \
@@ -61,4 +54,4 @@ class My_NodeData(NodeData):
         return s
 
     def __eq__(self, o: object) -> bool:
-        return super().__eq__(o)
+        return self.__eq__(o)
