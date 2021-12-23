@@ -1,5 +1,4 @@
-from Assignments.Ex3.src.My_Geolocation import My_Geolocarion
-from Geolocation import Geolocation
+
 from NodeData import NodeData
 
 
@@ -12,7 +11,7 @@ class My_NodeData(NodeData):
             self.Weight=-1
 
     def getkey(self) -> int:
-        x=int(self.key)
+        x=self.key
         return x
 
     def getlocation(self) -> tuple:

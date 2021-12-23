@@ -1,8 +1,4 @@
-from NodeData import NodeData
-from Geolocation import Geolocation
-from EdgeData import EdgeData
-from My_EdgeData import My_EdgeData
-from My_Geolocation import My_Geolocarion
+
 from My_NodeData import My_NodeData
 from GraphInterface import GraphInterface
 
@@ -48,7 +44,7 @@ class DiGraph(GraphInterface):
         else:
 
             self.edges_in[id1][id2] = weight
-            self.edges_out[id2][id1] = weight
+  #          self.edges_out[id2][id1] = weight
             self.MC += 1
             self.EdgeSize += 1
             return True

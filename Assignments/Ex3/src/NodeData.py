@@ -1,5 +1,3 @@
-from Geolocation import Geolocation
-
 
 class NodeData:
 
