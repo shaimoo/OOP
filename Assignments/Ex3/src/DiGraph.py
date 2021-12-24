@@ -7,19 +7,19 @@ class DiGraph(GraphInterface):
 
     def __init__(self):
         self.EdgeSize = 0
-        self.vertesis = {}
+        self.nodes = {}
         self.edges_in = {}
         self.edges_out= {}
         self.MC = 0
 
     def get_v(self, key) -> My_NodeData:
-        return self.vertesis[key]
+        return self.nodes[key]
 
     def v_size(self) -> int:
-        return len(self.vertesis)
+        return len(self.nodes)
 
     def get_all_v(self) -> dict:
-        return self.vertesis
+        return self.nodes
 
     def all_in_edges_of_node(self, id1: int) -> dict:
         return dict(self.edges_in[id1])
@@ -39,7 +39,7 @@ class DiGraph(GraphInterface):
         if self.edges_in[id1]:
             return False
 
-        if not self.vertesis[id1] or not self.vertesis[id2]:
+        if not self.nodes[id1] or not self.nodes[id2]:
             return False
         else:
 
@@ -50,31 +50,34 @@ class DiGraph(GraphInterface):
             return True
 
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
-        if self.vertesis.get(node_id):
+        if self.nodes.get(node_id):
             return False
         else:
             #arr[k] = 5
-            self.vertesis[node_id] =My_NodeData(pos)
+            self.nodes[node_id] =My_NodeData(pos)
             self.edges_in[node_id] = {}
             self.MC += 1
             return True
 
     def remove_node(self, node_id: int) -> bool:
-        if not self.vertesis[node_id]:
+        if not self.nodes[node_id]:
             return False
 
         else:
-            del self.vertesis[node_id]
+            del self.nodes[node_id]
             if self.edges_in[node_id]:
+                self.EdgeSize -= len(self.edges_in[node_id])
                 del self.edges_in[node_id]
-            if self.edges_out[node_id]:
-                self.EdgeSize -= len(self.edges_out[node_id])
-                del self.edges_out[node_id]
+                self.MC+=1
+
+
 
         return True
 
     def remove_edge(self, node_id1: int, node_id2: int) -> bool:
-        if self.edges_in[node_id1][node_id2]:
-            del self.edges_in[node_id1][node_id2]
+        if self.nodes[node_id1] and self.nodes[node_id2] and node_id2 in self.edges_in[node_id1] :
+            self.EdgeSize-=1
+            self.MC += 1
+            self.edges_in.get(node_id1).pop(node_id2)
             return True
         return False

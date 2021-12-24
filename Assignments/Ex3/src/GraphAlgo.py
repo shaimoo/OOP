@@ -4,11 +4,18 @@ from GraphAlgoInterface import GraphAlgoInterface
 from GraphInterface import GraphInterface
 from DiGraph import DiGraph
 from My_NodeData import My_NodeData
+from DiGraph import DiGraph
 
 
 
 
 class GraphAlgo(GraphAlgoInterface):
+
+    def __init__(self,g:DiGraph):
+        self.g = g
+
+
+
 
     def DFS(self,param:int):
        stack = []

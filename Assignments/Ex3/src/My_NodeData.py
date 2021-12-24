@@ -1,18 +1,32 @@
 
-from NodeData import NodeData
 
 
-class My_NodeData(NodeData):
 
-    def __init__(self, key=int , t=tuple):
+class My_NodeData():
+
+    def __init__(self,key:int,t=tuple ,**kwargs) ->None:
+
             self.key = key
             self.location = t
             self.prev = -1
             self.Weight=-1
+            self.Tag = -1
+            self.Info = ""
+
+    def getInfo(self) -> str:
+        return self.Info
+
+    def setInfo(self, x: str) -> None:
+        self.Info = x
+
+    def setTag(self,t:int)->None:
+        self.Tag = t
+    def getTag(self)->int:
+        return self.Tag
 
     def getkey(self) -> int:
-        x=self.key
-        return x
+        #x=self.key
+        return self.key
 
     def getlocation(self) -> tuple:
         x=tuple(self.location)

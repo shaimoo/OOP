@@ -7,7 +7,6 @@ class My_EdgeData(EdgeData):
           self.Src=src
           self.Dest=dest
           self.Weight=weight
-          self.Info=""
           self.Tag=-1
 
 
@@ -20,11 +19,7 @@ class My_EdgeData(EdgeData):
      def getWeight(self) -> float:
           return self.Weight
 
-     def getInfo(self) -> str:
-          return self.Info
 
-     def setInfo(self, x:str) -> None:
-          self.Info=x
 
      def getTag(self) -> int:
           return self.Tag
