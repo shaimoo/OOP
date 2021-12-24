@@ -54,7 +54,7 @@ class DiGraph(GraphInterface):
             return False
         else:
             #arr[k] = 5
-            self.nodes[node_id] =My_NodeData(pos)
+            self.nodes[node_id] =My_NodeData(node_id,pos)
             self.edges_in[node_id] = {}
             self.MC += 1
             return True

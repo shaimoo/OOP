@@ -1,3 +1,4 @@
+import json
 from typing import List
 
 from GraphAlgoInterface import GraphAlgoInterface
@@ -85,7 +86,35 @@ class GraphAlgo(GraphAlgoInterface):
 
 
     def load_from_json(self, file_name: str) -> bool:
-        pass
+
+        graph=DiGraph()
+        try:
+            with open (file_name,"r") as f:
+                my_list = json.load(f)
+                for node in my_list["Nodes"]:
+                    pos = node["pos"]
+                    s=pos.split(',')
+                    x=float(s[0])
+                    y=float(s[1])
+                    z=float(s[2])
+                    p=(x,y ,z)
+                    id = node["id"]
+                    graph.add_node(node_id=id ,pos=tuple(p))
+                for i in my_list["Edges"]:
+                    Src = i["src"]
+                    w=i["w"]
+                    dest=i["dest"]
+                    graph.add_edge(Src,dest,w)
+
+            self.graph=graph
+            return True
+
+        except EOFError as e:
+            print(e)
+            return False
+
+
+
 
     def save_to_json(self, file_name: str) -> bool:
         pass

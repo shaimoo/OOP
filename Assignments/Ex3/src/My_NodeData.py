@@ -4,7 +4,7 @@
 
 class My_NodeData():
 
-    def __init__(self,key:int,t=tuple ,**kwargs) ->None:
+    def __init__(self,key:int,t=tuple ) ->None:
 
             self.key = key
             self.location = t
