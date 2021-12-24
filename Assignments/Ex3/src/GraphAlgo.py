@@ -5,7 +5,8 @@ from GraphInterface import GraphInterface
 from DiGraph import DiGraph
 from My_NodeData import My_NodeData
 from DiGraph import DiGraph
-
+from collections import deque
+from queue import Queue
 
 
 
@@ -14,72 +15,59 @@ class GraphAlgo(GraphAlgoInterface):
     def __init__(self,g:DiGraph):
         self.graph = g
 
-
-"""private void DFS(int key) {
-        Stack<NodeData> s = new Stack<NodeData>();
-        NodeData t = this.g.getNode(key);
-        s.push(t);
-        t.setTag(1); //each and evrynode if visited
-        while (!s.isEmpty()) {
-            t = s.pop();
-            Iterator<EdgeData> e = this.g.edgeIter(t.getKey());
-            while (e.hasNext()) {
-                EdgeData ed = e.next();
-                //checking on neiighobs
-                if (this.g.getNode(ed.getDest()).getTag() != 1) {//check if  visited
-                    this.g.getNode(ed.getDest()).setTag(1);//set as visited
-                    s.push(this.g.getNode(ed.getDest()));
-                }
-            }
-        }
-    }
+    def get_graph(self) -> DiGraph:
+        """
+         This method returns the graph which the Graph_Algo works on.
+        :return: directed weighted graph.
+        """
+        return self.graph
 
 
-    @Override
-    public boolean isConnected() {
-        /**dfs for each node**/
-       if (this.g == null)
-           return true;
-       if (this.g.edgeSize() == 0 || this.g.nodeSize() == 1)
-           return true;
-       if (this.g.nodeSize() > this.g.edgeSize() + 1)
-           return false;
-       Iterator<NodeData> e =
-"""
+    def DFS(self, id1: int) -> None:
+        graph = self.graph
 
-    def DFS(self,param:int):
-       stack = []
-       t=self.graph.get_v(param)
-       stack.append(t)
-       t.setTag(1)
-       while stack.__sizeof__()>0:
-            t=stack.pop()
-            Iterator =self.graph.all_in_edges_of_node(t.key).__iter__()
-            while not Iterator == None:
-                ed =Iterator.__next__()
-                if self.graph.get_v(ed.getDest().getTag()) != 1 :
-                    self.graph.get_v(ed.getDest().setTag(1))
-                stack.append(self.graph.get_v(ed.getDest()))
+
+        stack = deque()
+        stack.append(id1)
+
+        n =  graph.get_v(id1)
+        n.setTag(1) #mark as visited
+
+        while len(stack) != 0:
+            curr = stack.pop()
+            #running on edges on keys <src,<dest,weight>>
+            #neighbor = graph.all_in_edges_of_node(curr):
+            for neighbor in graph.all_in_edges_of_node(curr):
+                if graph.get_v(neighbor).getTag()!=1:
+                       graph.get_v(neighbor).setTag(1)
+                       stack.append(neighbor)
 
 
 
     def isConnected(self)->bool:
-        if self.graph == None:
+        g= self.graph
+
+
+        if g == None:
             return True
-        if self.graph.e_size() == 0 or self.graph.v_size() == 1:#maby () needed
+        if g.e_size() == 0 or g.v_size() == 1:#maby () needed
             return True
-        if self.graph.v_size() > self.graph.e_size() + 1:
+        if g.v_size() > g.e_size() + 1:
             return False
-        iterate_node = self.graph.get_all_v().__iter__()
-        while iterate_node:
-              g = My_NodeData(iterate_node.__next__())
-              self.DFS(g.getkey())
-              iterate_node2 = self.graph.get_all_v().__iter__()
-              while iterate_node2:
-                  g  = iterate_node2.__next__()
-                  if g.getTag!=1 :
+        all_nodes = g.get_all_v().keys() #self might be needed
+        for v in all_nodes:
+              #g = My_NodeData(iterate_node.__next__())
+              self.DFS(v)
+
+              all_nodes2 = g.get_all_v().values()
+              for v in all_nodes2:
+
+                  if v.getTag() != 1 :
                       return False
-              g.setTag(0)
+
+                  v.setTag(0)
+
+
 
         return True
 

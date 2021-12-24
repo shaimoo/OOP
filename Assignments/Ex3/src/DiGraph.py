@@ -36,7 +36,7 @@ class DiGraph(GraphInterface):
 
     def add_edge(self, id1: int, id2: int, weight: float) -> bool:
 
-        if self.edges_in[id1]:
+        if self.edges_in[id1].get(id2):
             return False
 
         if not self.nodes[id1] or not self.nodes[id2]:
@@ -44,7 +44,7 @@ class DiGraph(GraphInterface):
         else:
 
             self.edges_in[id1][id2] = weight
-  #          self.edges_out[id2][id1] = weight
+
             self.MC += 1
             self.EdgeSize += 1
             return True

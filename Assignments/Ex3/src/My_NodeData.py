@@ -10,7 +10,7 @@ class My_NodeData():
             self.location = t
             self.prev = -1
             self.Weight=-1
-            self.Tag = -1
+            self.Tag = 0
             self.Info = ""
 
     def getInfo(self) -> str:

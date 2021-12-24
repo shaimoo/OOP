@@ -17,9 +17,11 @@ class TestGraphAlgo(TestCase):
         g.add_edge(2, 0,10)
         g.add_edge(3, 2,10)
 
-
-
         graph_in_algo = GraphAlgo(g)
+
+        print(graph_in_algo.isConnected())
+
+        g.remove_edge(2,0)
 
         print(graph_in_algo.isConnected())
         #self.assertTrue(graph_in_algo.isConnected(),True)
