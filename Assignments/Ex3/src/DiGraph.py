@@ -74,6 +74,9 @@ class DiGraph(GraphInterface):
 
         return True
 
+    def get_all_e_in(self) -> dict:
+        return self.edges_in
+
     def remove_edge(self, node_id1: int, node_id2: int) -> bool:
         if self.nodes[node_id1] and self.nodes[node_id2] and node_id2 in self.edges_in[node_id1] :
             self.EdgeSize-=1

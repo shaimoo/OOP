@@ -35,7 +35,10 @@ class TestGraphAlgo(TestCase):
         print(g.get_graph().get_v(0).getkey())
 
     def test_save_to_json(self):
-        self.fail()
+        x=DiGraph()
+        g=GraphAlgo(x)
+        g.load_from_json("C:/Users/shaim/PycharmProjects/OOP/Assignments/Ex3/data/A0.json")
+        g.save_to_json("out.json")
 
     def test_shortest_path(self):
         self.fail()

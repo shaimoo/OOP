@@ -3,11 +3,10 @@ from typing import List
 
 from GraphAlgoInterface import GraphAlgoInterface
 from GraphInterface import GraphInterface
-from DiGraph import DiGraph
-from My_NodeData import My_NodeData
+
 from DiGraph import DiGraph
 from collections import deque
-from queue import Queue
+
 
 
 
@@ -72,19 +71,6 @@ class GraphAlgo(GraphAlgoInterface):
 
         return True
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     def load_from_json(self, file_name: str) -> bool:
 
         graph=DiGraph()
@@ -113,11 +99,31 @@ class GraphAlgo(GraphAlgoInterface):
             print(e)
             return False
 
-
-
-
     def save_to_json(self, file_name: str) -> bool:
-        pass
+        try:
+           with open(file_name , "w")as f:
+               my_ans={}
+               nodes=[]
+               edeges=[]
+
+               for node in self.graph.get_all_v().values():
+                   nodes.append({"pos":node.getlocation(),"id": node.getkey()})
+
+                   for edge , weith in self.graph.all_in_edges_of_node(node.getkey()).items():
+                        edeges.append({"src":node.getkey() ,"wight":weith,"dest":edge})
+
+
+               my_ans["Edges"]=edeges
+               my_ans["Nodes"]=nodes
+
+               json.dump(my_ans,indent=6 ,fp=f)
+
+
+           return True
+
+        except EOFError as e:
+            print(e)
+            return False
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
         pass
@@ -126,7 +132,7 @@ class GraphAlgo(GraphAlgoInterface):
         pass
 
     def get_graph(self) -> GraphInterface:
-        return super().get_graph()
+        return self.get_graph()
 
     def TSP(self, node_lst: List[int]) -> (List[int], float):
         super().TSP(node_lst)
