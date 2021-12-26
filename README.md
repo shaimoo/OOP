@@ -18,7 +18,7 @@ My_Nodedata
   | get_v(self,key)  | returns the My_NodeData ig id equals key |
   | v_size(self)     | returns the size of the Nodes in the graph |
   | get_all_v(self)  | returns all the nodes in the graph by dict|
-  | all_in_edges_of_node(self,id1: int)||return a dictionary of all the nodes connected to node_id|
+  | all_in_edges_of_node(self,id1: int)|return a dictionary of all the nodes connected to node_id|
   |all_out_edges_of_node(self, id1: int)| return a dictionary of all the nodes connected from node_id|
   |get_mc(self) | Returns the current version of this graph|
   |add_edge(self, id1: int, id2: int, weight: float) | Adds an edge to the graph ,return: True if the edge was added successfully, False o.w.|
