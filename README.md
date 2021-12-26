@@ -31,5 +31,16 @@ My_Nodedata
   
   GraphAlgo
    this class implements GraphAlgointerface interface 
-  
- 
+    | Name of function | Description |
+  |------------------|-------------|
+  | get_graph(self)       | :return: the directed graph on which the algorithm works on.|
+  | def DFS(self, id1: int)     | implementation of dfc algorithm do it about all the node.| 
+  |  def isConnected(self) | :return: if the graph is conect or no |
+  | load_from_json(self, file_name: str)      | returns True if the loading was successful, False o.w.|
+  |  save_to_json(self, file_name: str)      |  returns True if the loading was successful, False o.w.|
+  |  def shortest_path(self, id1: int, id2: int)       |  The distance of the path, a list of the nodes ids that the path goes through|
+  | TSP(self, node_lst: List[int])     |  A list of the nodes id's in the path, and the overall distance|
+  |  def centerPoint(self)    | :return: The nodes id, min-maximum distance|
+  |  plot_graph(self)     |  If the nodes have a position, the nodes will be placed there.Otherwise, they will be placed in a random but elegant manner.return: None|
+        
+   
