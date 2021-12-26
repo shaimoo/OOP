@@ -8,9 +8,6 @@ My_Nodedata
   this class implements NodeData interface represent node at graph
   that have id=name_of_node and location=(0,0,0) 
   
- My_EdgeData
- this class implements EdgeData interface represent Edge at graph
- that have source destination and weight
  
  DiGraph
   this class implements Graphinterface interface represent a weighted
