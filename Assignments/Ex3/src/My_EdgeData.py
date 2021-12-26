@@ -1,6 +1,6 @@
-from EdgeData import EdgeData
 
-class My_EdgeData(EdgeData):
+
+class My_EdgeData():
 
      def __init__(self ,src:int,dest:int,weight:float):
 
@@ -18,6 +18,11 @@ class My_EdgeData(EdgeData):
 
      def getWeight(self) -> float:
           return self.Weight
+
+
+
+     def setWeight(self,weight) -> None:
+          self.Weight = weight
 
 
 

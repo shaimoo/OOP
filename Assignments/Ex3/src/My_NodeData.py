@@ -11,7 +11,7 @@ class My_NodeData():
             self.prev = -1
             self.Weight=-1
             self.Tag = 0
-            self.Info = ""
+            self.Info = " "
 
     def getInfo(self) -> str:
         return self.Info
@@ -48,23 +48,12 @@ class My_NodeData():
     def setWeight(self, x:float) -> None:
         self.Weight = x
 
-    def getInfo(self) -> str:
-        return self.info
-
-    def setInfo(self, x:str) -> None:
-        self.info=x
-
-    def __str__(self) -> str:
-        s = "------ Node #" + str(self.key) + " ------\n" + \
-            "   - Info = " + self.info + "   -Wight  " + str(self.getWeight)
-
-        return s
-
-    def __repr__(self) -> str:
-        s = "------ Node #" + str(self.key) + " ------\n" + \
-            "   - Info = " + self.info + "   -Wight  " + str(self.getWeight)
-
-        return s
-
     def __eq__(self, o: object) -> bool:
-        return self.__eq__(o)
+        if isinstance(o, My_NodeData):
+            return self.key == o.key and self.Weight == o.Weight
+
+    def __lt__(self, o):
+        if isinstance(o, My_NodeData):
+            return self.key == o.key and self.Weight == o.Weight
+
+

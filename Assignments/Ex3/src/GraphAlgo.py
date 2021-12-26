@@ -1,3 +1,4 @@
+import collections
 import json
 from typing import List
 
@@ -7,7 +8,10 @@ from GraphInterface import GraphInterface
 from DiGraph import DiGraph
 from collections import deque
 
+import queue
+from queue import PriorityQueue
 
+from My_NodeData import My_NodeData
 
 
 class GraphAlgo(GraphAlgoInterface):
@@ -126,13 +130,95 @@ class GraphAlgo(GraphAlgoInterface):
             return False
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
+        #returning path + distance
+        g = self.graph
+        first_res = 0
+        pq = PriorityQueue()
+        my_nodes = g.get_all_v().values()
+       # print(my_nodes)
+        #ntest = My_NodeData(1,(1,1,1))
+        #ntest.setInfo("jungling")
+        for node in my_nodes:
+            node.setWeight(100000)
+            node.setInfo("White")
+            pq.put(node)
+
+        g.get_v(id1).setWeight(0)
+
+        while not pq.empty():
+            #does get() is like pop()?
+              n = pq.get()
+
+              edges_of_n = g.all_in_edges_of_node(n.getkey()).items()
+            #<src,<dest,weight>
+            #running <dest,weight>
+              for dest,weight in edges_of_n:
+                  #getting the dest node
+                  #edge = My_EdgeData(n.getkey,dest,weight)
+
+                  n_next = g.get_v(dest)
+
+                  if n_next.getInfo()!="red":
+                     t = n.getWeight() +weight
+
+                     if n_next.getWeight()>t:
+                         n_next.setWeight(t)
+                         n_next.prev = n.getkey()
+                         pq.put(n_next)
+                         #maby pq.remove(u) needed
+                  n.setInfo("red")
+
+
+        first_res = g.get_v(id2).key
+
+            #now the path
+        ans = []
+        anse_helper = deque()
+        curr = g.get_v(id2)
+        ans.append(curr.getkey())
+
+        anse_helper.appendleft(curr.getkey())
+        
+        while curr.getkey()!=id1:
+            pred = curr.prev
+            curr = g.get_v(pred)
+            anse_helper.appendleft(curr.getkey())
+            #ans.append(curr.getkey())
+        ans = list(anse_helper)
+
+
+        return  first_res,ans
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         pass
 
     def plot_graph(self) -> None:
         pass
 
     def get_graph(self) -> GraphInterface:
-        return self.get_graph()
+        return self.graph
 
     def TSP(self, node_lst: List[int]) -> (List[int], float):
         super().TSP(node_lst)
