@@ -2,16 +2,17 @@ import collections
 import json
 from typing import List
 
-from GraphAlgoInterface import GraphAlgoInterface
-from GraphInterface import GraphInterface
 
-from DiGraph import DiGraph
+
 from collections import deque
 
 import queue
 from queue import PriorityQueue
 
-from My_NodeData import My_NodeData
+from Assignments.Ex3.src.DiGraph import DiGraph
+from Assignments.Ex3.src.GraphAlgoInterface import GraphAlgoInterface
+from Assignments.Ex3.src.GraphInterface import GraphInterface
+
 
 
 class GraphAlgo(GraphAlgoInterface):
@@ -164,12 +165,13 @@ class GraphAlgo(GraphAlgoInterface):
                      if n_next.getWeight()>t:
                          n_next.setWeight(t)
                          n_next.prev = n.getkey()
+
                          pq.put(n_next)
                          #maby pq.remove(u) needed
-                  n.setInfo("red")
+                         n.setInfo("red")
 
 
-        first_res = g.get_v(id2).key
+        first_res = g.get_v(id2).getWeight()
 
             #now the path
         ans = []
@@ -190,30 +192,6 @@ class GraphAlgo(GraphAlgoInterface):
         return  first_res,ans
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        pass
-
     def plot_graph(self) -> None:
         pass
 
@@ -224,5 +202,24 @@ class GraphAlgo(GraphAlgoInterface):
         super().TSP(node_lst)
 
     def centerPoint(self) -> (int, float):
-        super().centerPoint()
+        max_center=1000000000.1
+        center=1000000000.1
+        node = -1
+        node_center=-1
+        g = GraphAlgo(self.get_graph())
+        for node1 in g.graph.get_all_v():
+            max_len = 0
+            for node2 in g.graph.get_all_v():
 
+                if node2 != node1 :
+                    x=g.shortest_path(node1,node2)
+                    x=x[0]
+                    if max_len < x:
+                        max_center=x
+                        max_len=x
+                        node_center=node1
+
+            if center >max_center:
+                  center=max_center
+                  node=node_center
+        return node,center

@@ -1,6 +1,5 @@
-
-from My_NodeData import My_NodeData
-from GraphInterface import GraphInterface
+from Assignments.Ex3.src.GraphInterface import GraphInterface
+from Assignments.Ex3.src.My_NodeData import My_NodeData
 
 
 class DiGraph(GraphInterface):

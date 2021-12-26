@@ -1,6 +1,7 @@
 from typing import List
 
-from GraphInterface import GraphInterface
+from Assignments.Ex3.src.GraphInterface import GraphInterface
+
 
 class GraphAlgoInterface:
     """This abstract class represents an interface of a graph."""
