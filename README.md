@@ -12,6 +12,7 @@ convert our EX2 at java to python and we compared the result.
 ### DiGraph  <br />
   this class implements Graphinterface interface represent a weighted
   and directed graph.
+
   | Name of function | Description |
   |------------------|-------------|
   | init(self)       | constractor function|
@@ -49,3 +50,8 @@ convert our EX2 at java to python and we compared the result.
 - After you download the task at zip you need to extract  the zip file , then you need 
   to open pycharm and run the main file .....
 
+ # tests <br />
+ ### test_DiGraph <br />
+- we chack every function with exmples to see the correctness of the function.
+
+ ### 

@@ -47,7 +47,6 @@ class TestGraphAlgo(TestCase):
             g.add_node(i,(0,0,0))
 
         g.add_edge(1,6,14)
-
         g.add_edge(1, 3, 9)
         g.add_edge(2, 4, 15)
         g.add_edge(2, 3, 10)
@@ -67,13 +66,20 @@ class TestGraphAlgo(TestCase):
 
 
     def test_plot_graph(self):
-        self.fail()
+        x = DiGraph()
+        g = GraphAlgo(x)
+        g.load_from_json("C:/Users/shaim/PycharmProjects/OOP/Assignments/Ex3/data/A0.json")
+        g.plot_graph()
+
 
     def test_get_graph(self):
         self.fail()
 
     def test_tsp(self):
-        self.fail()
+        g = DiGraph()
+        for i in range(1, 10):
+            g.add_node(i, (0, 0, 0))
+
 
     def test_center_point(self):
         g = DiGraph()

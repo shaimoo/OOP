@@ -3,10 +3,10 @@ import json
 from typing import List
 
 from collections import deque
-
+from matplotlib import pyplot as plt
 import queue
 from queue import PriorityQueue
-
+import random
 from Assignments.Ex3.src.DiGraph import DiGraph
 from Assignments.Ex3.src.GraphAlgoInterface import GraphAlgoInterface
 from Assignments.Ex3.src.GraphInterface import GraphInterface
@@ -190,7 +190,25 @@ class GraphAlgo(GraphAlgoInterface):
 
 
     def plot_graph(self) -> None:
-        pass
+        g=self.graph
+        for i in g.get_all_v():
+            location=g.get_v(i).getlocation()
+            x=location[0]
+            y=location[1]
+            if (location[0] and location[1]) == 0:
+                x=random.randrange(0,200)
+                y=random.randrange(0,200)
+                g.get_v(i).setlocation((x,y,0))
+            plt.plot(float(x),float(y),marker='.' ,color="blue")
+            plt.text(float(x),float(y),str(i),color="red",fontsize="20")
+        for src in g.get_all_v():
+            for dest in g.all_in_edges_of_node(src):
+                l1=g.get_v(src).getlocation()
+                l2=g.get_v(dest).getlocation()
+                plt.annotate("", xy=(float(l1[0]),float(l1[1])), xytext=(l2[0],l2[1]), arrowprops=dict(arrowstyle="->"))
+                plt.text( ((l1[0]+l2[0])/2) , ((l1[1]+l2[1])/2) , str(format(g.all_in_edges_of_node(src).get(dest) , ".2f")) , color="green" , fontsize="10" )
+        plt.show()
+
 
 
 
@@ -228,41 +246,19 @@ class GraphAlgo(GraphAlgoInterface):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        pass
-
-
-
-
-
-
-
-
     def centerPoint(self) -> (int, float):
         max_center=1000000000.1
         center=1000000000.1
         node = -1
         node_center=-1
         g = self.graph
-
-        for node1 in g.graph.get_all_v():
+        y=GraphAlgo(g)
+        for node1 in g.get_all_v():
             max_len = 0
-            for node2 in g.graph.get_all_v():
+            for node2 in g.get_all_v():
 
                 if node2 != node1 :
-                    x=g.shortest_path(node1,node2)
+                    x=y.shortest_path(node1,node2)
                     x=x[0]
                     if max_len < x:
                         max_center=x
