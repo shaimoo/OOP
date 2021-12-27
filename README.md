@@ -4,12 +4,12 @@ at this task we build weighted and directed graphs ,so we
 convert our EX2 at java to python and we compared the result.
 
 ## classes 
-- My_Nodedata "\n"
+* My_Nodedata 
   this class implements NodeData interface represent node at graph
   that have id=name_of_node and location=(0,0,0) 
   
  
-- DiGraph \n 
+* DiGraph \n 
   this class implements Graphinterface interface represent a weighted
   and directed graph.
   | Name of function | Description |
@@ -27,17 +27,18 @@ convert our EX2 at java to python and we compared the result.
   |remove_edge(self, node_id1: int, node_id2: int)|Removes an edge from the graph.return: True if the edge was removed successfully, False o.w.|
   
 - GraphAlgo
-  this class implements GraphAlgointerface interface 
+  this class implements GraphAlgointerface interface .
+  
  | Name of function | Description |
  |------------------|-------------|
- | get_graph(self)       | :return: the directed graph on which the algorithm works on. |
+ | get_graph(self)       | return the directed graph on which the algorithm works on. |
  |  DFS(self, id1: int)     | implementation of dfc algorithm do it about all the node. | 
- |  isConnected(self) | :return: if the graph is conect or no |
+ |  isConnected(self) | return if the graph is conect or no |
  | load_from_json(self, file_name: str)      | returns True if the loading was successful, False o.w. |
  |  save_to_json(self, file_name: str)      |  returns True if the loading was successful, False o.w. |
  |   shortest_path(self, id1: int, id2: int)       | using dijkstra algorithm . returns The distance of the path, a list of the nodes ids that the path goes through |
  | TSP(self, node_lst: List[int])     |  A list of the nodes id's in the path, and the overall distance |
- |  centerPoint(self)    | :return: The nodes id, min-maximum distance | 
+ |  centerPoint(self)    | return The nodes id, min-maximum distance | 
  |  plot_graph(self)     |  If the nodes have a position, the nodes will be placed there.Otherwise, they will be placed in a random but elegant manner.return: None |
         
 
