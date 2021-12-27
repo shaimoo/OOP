@@ -4,7 +4,7 @@ at this task we build weighted and directed graphs ,so we
 convert our EX2 at java to python and we compared the result.
 
 ## classes 
-- My_Nodedata \n
+- My_Nodedata "\n"
   this class implements NodeData interface represent node at graph
   that have id=name_of_node and location=(0,0,0) 
   
