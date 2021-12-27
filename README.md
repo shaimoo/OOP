@@ -28,7 +28,7 @@ convert our EX2 at java to python and we compared the result.
   
 - GraphAlgo
   this class implements GraphAlgointerface interface 
-   | Name of function | Description |
+ | Name of function | Description |
  |------------------|-------------|
  | get_graph(self)       | :return: the directed graph on which the algorithm works on.|
  |  DFS(self, id1: int)     | implementation of dfc algorithm do it about all the node.| 
