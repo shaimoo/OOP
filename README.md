@@ -43,7 +43,7 @@ convert our EX2 at java to python and we compared the result.
         
 
   ## how to download  <br />
-- To download the task from GitHub, you should navigate to the top level of the project (SDN in this case) and then a green "Code" download button will be visible on the right.
+- To download the task from GitHub, you should navigate to the top level of the project , and then a green "Code" download button will be visible on the right.
    Choose the Download ZIP option from the Code pull-down menu. That ZIP file will contain the entire repository content.
   ## how to use  <br />
 - After you download the task at zip you need to extract  the zip file , then you need 
