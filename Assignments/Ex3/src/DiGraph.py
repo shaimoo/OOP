@@ -1,5 +1,6 @@
 from Assignments.Ex3.src.GraphInterface import GraphInterface
 from Assignments.Ex3.src.My_NodeData import My_NodeData
+import random
 
 
 class DiGraph(GraphInterface):
@@ -51,12 +52,18 @@ class DiGraph(GraphInterface):
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
         if self.nodes.get(node_id):
             return False
-        else:
-            #arr[k] = 5
-            self.nodes[node_id] =My_NodeData(node_id,pos)
+
+        if pos is not None:
+            # arr[k] = 5
+            self.nodes[node_id] = My_NodeData(node_id, pos)
             self.edges_in[node_id] = {}
             self.MC += 1
             return True
+        else:
+            rnd = random.randint(0, 100)
+            rnd2 = random.randint(0, 100)
+            self.MC += 1
+            self.nodes[node_id] = My_NodeData(node_id, (rnd, rnd2, 0))
 
     def remove_node(self, node_id: int) -> bool:
         if not self.nodes[node_id]:
