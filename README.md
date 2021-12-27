@@ -4,12 +4,12 @@ at this task we build weighted and directed graphs ,so we
 convert our EX2 at java to python and we compared the result.
 
 ## classes 
-* My_Nodedata <br />
+### My_Nodedata <br />
   this class implements NodeData interface represent node at graph
   that have id=name_of_node and location=(0,0,0) 
   
  
-* DiGraph  <br />
+### DiGraph  <br />
   this class implements Graphinterface interface represent a weighted
   and directed graph.
   | Name of function | Description |
@@ -26,7 +26,7 @@ convert our EX2 at java to python and we compared the result.
   |remove_node(self, node_id: int)| Removes a node from the graph.return: True if the edge was removed successfully, False o.w.|
   |remove_edge(self, node_id1: int, node_id2: int)|Removes an edge from the graph.return: True if the edge was removed successfully, False o.w.|
   
-- GraphAlgo  <br />
+### GraphAlgo  <br />
   this class implements GraphAlgointerface interface .
   
  | Name of function | Description |
