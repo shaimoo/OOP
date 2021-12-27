@@ -5,13 +5,16 @@
 class My_NodeData():
 
     def __init__(self,key:int,t=tuple ) ->None:
-
+            if t == None:
+                self.location = (0, 0, 0)
+            else:
+                self.location = (t[0], t[1], t[2])
             self.key = key
-            self.location =(t[0],t[1],t[2])
             self.prev = -1
             self.Weight=-1
             self.Tag = 0
             self.Info = " "
+
 
     def getInfo(self) -> str:
         return self.Info

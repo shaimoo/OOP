@@ -17,8 +17,11 @@ from Assignments.Ex3.src.GraphInterface import GraphInterface
 
 class GraphAlgo(GraphAlgoInterface):
 
-    def __init__(self,g:DiGraph):
-        self.graph = g
+    def __init__(self, g=DiGraph):
+        if g is None:
+           self.graph=DiGraph()
+        else:
+            self.graph = g
 
     def get_graph(self) -> GraphInterface:
 
@@ -82,14 +85,17 @@ class GraphAlgo(GraphAlgoInterface):
             with open (file_name,"r") as f:
                 my_list = json.load(f)
                 for node in my_list["Nodes"]:
-                    pos = node["pos"]
-                    s=pos.split(',')
-                    x=float(s[0])
-                    y=float(s[1])
-                    z=float(s[2])
-                    p=(x,y ,z)
+                    if 'pos' in my_list.keys():
+                          pos = node["pos"]
+                          s=pos.split(',')
+                          x=float(s[0])
+                          y=float(s[1])
+                          z=float(s[2])
+                          p=(x,y ,z)
+                    else:
+                        p=(0,0,0)
                     id = node["id"]
-                    graph.add_node(node_id=id ,pos=tuple(p))
+                    graph.add_node(node_id=id ,pos=p)
                 for i in my_list["Edges"]:
                     Src = i["src"]
                     w=i["w"]
@@ -177,9 +183,10 @@ class GraphAlgo(GraphAlgoInterface):
         
         while curr.getkey()!=id1:
             pred = curr.prev
+        #    if pred == -1: // bag
+         #       continue
             curr = g.get_v(pred)
             anse_helper.appendleft(curr.getkey())
-
         ans = list(anse_helper)
 
 

@@ -24,7 +24,7 @@ class DiGraph(GraphInterface):
         return dict(self.edges_in[id1])
 
     def all_out_edges_of_node(self, id1: int) -> dict:
-        return dict(self.edges_out[id1])
+        return dict(self.edges_in[id1])
 
     def e_size(self) -> int:
 
