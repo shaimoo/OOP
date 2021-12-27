@@ -2,8 +2,6 @@ import collections
 import json
 from typing import List
 
-
-
 from collections import deque
 
 import queue
@@ -20,11 +18,10 @@ class GraphAlgo(GraphAlgoInterface):
     def __init__(self,g:DiGraph):
         self.graph = g
 
-    def get_graph(self) -> DiGraph:
-        """
-         This method returns the graph which the Graph_Algo works on.
-        :return: directed weighted graph.
-        """
+    def get_graph(self) -> GraphInterface:
+
+
+
         return self.graph
 
 
@@ -195,18 +192,71 @@ class GraphAlgo(GraphAlgoInterface):
     def plot_graph(self) -> None:
         pass
 
-    def get_graph(self) -> GraphInterface:
-        return self.graph
+
 
     def TSP(self, node_lst: List[int]) -> (List[int], float):
-        super().TSP(node_lst)
+        g = self.graph
+        x = GraphAlgo(g)
+
+        ans = []
+        dist = 0
+        node_lst_len = len(node_lst)
+        for i in range (1,node_lst_len):
+            n1 = g.get_v(node_lst[i-1])
+            n2 = g.get_v(node_lst[i])
+
+            dist += x.shortest_path(n1.getkey(),n2.getkey())[0]
+
+        i = node_lst_len-1
+
+        while i!=0:
+            #curr
+             n1 = g.get_v(node_lst[i+1])
+             #prev
+             n2 = g.get_v(node_lst[i])
+             ans.append(x.shortest_path(n2.getkey(),n1.getkey())[1])
+             i-=1
+
+        ans2 = []
+        k = 0
+        for i in ans:
+            for j in ans[i]:
+                ans2[k] = ans[i][j]
+                k+=1
+
+        return  ans2,dist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        pass
+
+
+
+
+
+
+
 
     def centerPoint(self) -> (int, float):
         max_center=1000000000.1
         center=1000000000.1
         node = -1
         node_center=-1
-        g = GraphAlgo(self.get_graph())
+        g = self.graph
+
         for node1 in g.graph.get_all_v():
             max_len = 0
             for node2 in g.graph.get_all_v():
