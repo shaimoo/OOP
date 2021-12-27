@@ -54,4 +54,4 @@ convert our EX2 at java to python and we compared the result.
  ### test_DiGraph <br />
 - we chack every function with exmples to see the correctness of the function.
 
- ### 
+ ###

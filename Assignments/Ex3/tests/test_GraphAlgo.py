@@ -77,9 +77,29 @@ class TestGraphAlgo(TestCase):
 
     def test_tsp(self):
         g = DiGraph()
-        for i in range(1, 10):
+        for i in range(1, 5):
             g.add_node(i, (0, 0, 0))
 
+        g.add_edge(1, 2, 10)
+        g.add_edge(2, 1, 5)
+
+        g.add_edge(1, 3, 15)
+        g.add_edge(3, 1, 6)
+
+        g.add_edge(3, 2, 13)
+        g.add_edge(2, 3, 9)
+
+        g.add_edge(3, 4, 12)
+        g.add_edge(4, 3, 9)
+
+        g.add_edge(4, 2, 8)
+        g.add_edge(2, 4, 10)
+
+        x = GraphAlgo(g)
+
+        towns = [1, 2, 3, 4]
+        print(x.TSP(towns)[0])
+        print(x.TSP(towns)[1])
 
     def test_center_point(self):
         g = DiGraph()

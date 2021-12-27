@@ -3,6 +3,8 @@ import json
 from typing import List
 
 from collections import deque
+
+import numpy as np
 from matplotlib import pyplot as plt
 import queue
 from queue import PriorityQueue
@@ -133,9 +135,7 @@ class GraphAlgo(GraphAlgoInterface):
         first_res = 0
         pq = PriorityQueue()
         my_nodes = g.get_all_v().values()
-       # print(my_nodes)
-        #ntest = My_NodeData(1,(1,1,1))
-        #ntest.setInfo("jungling")
+
         for node in my_nodes:
             node.setWeight(100000)
             node.setInfo("White")
@@ -144,15 +144,12 @@ class GraphAlgo(GraphAlgoInterface):
         g.get_v(id1).setWeight(0)
 
         while not pq.empty():
-            #does get() is like pop()?
+
               n = pq.get()
 
               edges_of_n = g.all_in_edges_of_node(n.getkey()).items()
-            #<src,<dest,weight>
-            #running <dest,weight>
+
               for dest,weight in edges_of_n:
-                  #getting the dest node
-                  #edge = My_EdgeData(n.getkey,dest,weight)
 
                   n_next = g.get_v(dest)
 
@@ -164,7 +161,7 @@ class GraphAlgo(GraphAlgoInterface):
                          n_next.prev = n.getkey()
 
                          pq.put(n_next)
-                         #maby pq.remove(u) needed
+
                          n.setInfo("red")
 
 
@@ -182,7 +179,7 @@ class GraphAlgo(GraphAlgoInterface):
             pred = curr.prev
             curr = g.get_v(pred)
             anse_helper.appendleft(curr.getkey())
-            #ans.append(curr.getkey())
+
         ans = list(anse_helper)
 
 
@@ -209,9 +206,6 @@ class GraphAlgo(GraphAlgoInterface):
                 plt.text( ((l1[0]+l2[0])/2) , ((l1[1]+l2[1])/2) , str(format(g.all_in_edges_of_node(src).get(dest) , ".2f")) , color="green" , fontsize="10" )
         plt.show()
 
-
-
-
     def TSP(self, node_lst: List[int]) -> (List[int], float):
         g = self.graph
         x = GraphAlgo(g)
@@ -219,32 +213,27 @@ class GraphAlgo(GraphAlgoInterface):
         ans = []
         dist = 0
         node_lst_len = len(node_lst)
-        for i in range (1,node_lst_len):
-            n1 = g.get_v(node_lst[i-1])
+        for i in range(1, node_lst_len):
+            n1 = g.get_v(node_lst[i - 1])
             n2 = g.get_v(node_lst[i])
 
-            dist += x.shortest_path(n1.getkey(),n2.getkey())[0]
+            dist += x.shortest_path(n1.getkey(), n2.getkey())[0]
 
-        i = node_lst_len-1
+        i = node_lst_len - 1
+        # ans_helper = deque()
+        while i != 0:
+            # curr
+            n1 = g.get_v(node_lst[i])
+            # prev
+            n2 = g.get_v(node_lst[i - 1])
+            ans.append(x.shortest_path(n2.getkey(), n1.getkey())[1])
+            i -= 1
 
-        while i!=0:
-            #curr
-             n1 = g.get_v(node_lst[i+1])
-             #prev
-             n2 = g.get_v(node_lst[i])
-             ans.append(x.shortest_path(n2.getkey(),n1.getkey())[1])
-             i-=1
+        an_array = np.array(ans)
 
-        ans2 = []
-        k = 0
-        for i in ans:
-            for j in ans[i]:
-                ans2[k] = ans[i][j]
-                k+=1
+        ans3 = an_array.flatten().tolist()
 
-        return  ans2,dist
-
-
+        return ans3, dist
 
     def centerPoint(self) -> (int, float):
         max_center=1000000000.1
