@@ -4,12 +4,12 @@ at this task we build weighted and directed graphs ,so we
 convert our EX2 at java to python and we compared the result.
 
 ## classes 
-* My_Nodedata 
+* My_Nodedata <br />
   this class implements NodeData interface represent node at graph
   that have id=name_of_node and location=(0,0,0) 
   
  
-* DiGraph \n 
+* DiGraph  <br />
   this class implements Graphinterface interface represent a weighted
   and directed graph.
   | Name of function | Description |
@@ -26,7 +26,7 @@ convert our EX2 at java to python and we compared the result.
   |remove_node(self, node_id: int)| Removes a node from the graph.return: True if the edge was removed successfully, False o.w.|
   |remove_edge(self, node_id1: int, node_id2: int)|Removes an edge from the graph.return: True if the edge was removed successfully, False o.w.|
   
-- GraphAlgo
+- GraphAlgo  <br />
   this class implements GraphAlgointerface interface .
   
  | Name of function | Description |
@@ -42,10 +42,10 @@ convert our EX2 at java to python and we compared the result.
  |  plot_graph(self)     |  If the nodes have a position, the nodes will be placed there.Otherwise, they will be placed in a random but elegant manner.return: None |
         
 
-  ##how to download 
+  ## how to download  <br />
 - To download the task from GitHub, you should navigate to the top level of the project (SDN in this case) and then a green "Code" download button will be visible on the right.
    Choose the Download ZIP option from the Code pull-down menu. That ZIP file will contain the entire repository content.
-  ##how to use 
+  ## how to use  <br />
 - After you download the task at zip you need to extract  the zip file , then you need 
   to open pycharm and run the main file .....
 
