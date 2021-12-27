@@ -183,8 +183,8 @@ class GraphAlgo(GraphAlgoInterface):
         
         while curr.getkey()!=id1:
             pred = curr.prev
-        #    if pred == -1: // bag
-         #       continue
+            if not g.add_node(pred):
+                break
             curr = g.get_v(pred)
             anse_helper.appendleft(curr.getkey())
         ans = list(anse_helper)
