@@ -1,5 +1,6 @@
 import collections
 import json
+import math
 from typing import List
 
 from collections import deque
@@ -13,6 +14,8 @@ from Assignments.Ex3.src.DiGraph import DiGraph
 from Assignments.Ex3.src.GraphAlgoInterface import GraphAlgoInterface
 from Assignments.Ex3.src.GraphInterface import GraphInterface
 
+
+from My_NodeData import  My_NodeData
 
 
 class GraphAlgo(GraphAlgoInterface):
@@ -133,61 +136,47 @@ class GraphAlgo(GraphAlgoInterface):
             return False
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
-        #returning path + distance
+        # returning path + distance
         g = self.graph
         first_res = 0
         pq = PriorityQueue()
         my_nodes = g.get_all_v().values()
 
         for node in my_nodes:
-            node.setWeight(100000)
-            node.setInfo("White")
+            node.setWeight(math.inf)
+            node.setTag(-1)
             pq.put(node)
 
-        g.get_v(id1).setWeight(0)
+        start: My_NodeData = g.get_v(key=id1)
+        start.setWeight(0)
 
+        pq.put(start)
         while not pq.empty():
 
-              n = pq.get()
+            n1: My_NodeData = pq.get()
 
-              edges_of_n = g.all_in_edges_of_node(n.getkey()).items()
+            edges_of_n = g.all_in_edges_of_node(n1.getkey()).items()
 
-              for dest,weight in edges_of_n:
+            for dest, weight in edges_of_n:
 
-                  n_next = g.get_v(dest)
+                n2: My_NodeData = g.get_v(dest)
+                right = n1.getWeight() + weight
+                if right < n2.getWeight():
+                    n2.setWeight(right)
+                    n2.setTag(n1.getkey())
+                    pq.put(n2)
 
-                  if n_next.getInfo()!="red":
-                     t = n.getWeight() +weight
+        right: My_NodeData = g.get_v(id2)
+        if right.getWeight() is math.inf:
+            return math.inf, []
+        path = []
+        path.insert(0, right.getkey())
+        pos = right.getTag()
 
-                     if n_next.getWeight()>t:
-                         n_next.setWeight(t)
-                         n_next.prev = n.getkey()
-
-                         pq.put(n_next)
-
-                         n.setInfo("red")
-
-
-        first_res = g.get_v(id2).getWeight()
-
-            #now the path
-        ans = []
-        anse_helper = deque()
-        curr = g.get_v(id2)
-        ans.append(curr.getkey())
-
-        anse_helper.appendleft(curr.getkey())
-        
-        while curr.getkey()!=id1:
-            pred = curr.prev
-            if not g.add_node(pred):
-                break
-            curr = g.get_v(pred)
-            anse_helper.appendleft(curr.getkey())
-        ans = list(anse_helper)
-
-
-        return  first_res,ans
+        while pos != -1:
+            path.insert(0, pos)
+            pos = g.get_v(pos).getTag()
+        return right.getWeight(), path
 
 
     def plot_graph(self) -> None:
@@ -216,28 +205,19 @@ class GraphAlgo(GraphAlgoInterface):
 
         ans = []
         dist = 0
-        node_lst_len = len(node_lst)
-        for i in range(1, node_lst_len):
-            n1 = g.get_v(node_lst[i - 1])
-            n2 = g.get_v(node_lst[i])
+        if len(node_lst) > 0:
+            ans.append(node_lst[0])
+            start=node_lst[0]
+            node_lst_len = len(node_lst)+1
+            for i in range(1, node_lst_len):
+                result = x.shortest_path(start,i)
+                an = result[1]
+                dist+=result[0]
+                start = i
+                for j in an[1:]:
+                    ans.append(j)
 
-            dist += x.shortest_path(n1.getkey(), n2.getkey())[0]
-
-        i = node_lst_len - 1
-        # ans_helper = deque()
-        while i != 0:
-            # curr
-            n1 = g.get_v(node_lst[i])
-            # prev
-            n2 = g.get_v(node_lst[i - 1])
-            ans.append(x.shortest_path(n2.getkey(), n1.getkey())[1])
-            i -= 1
-
-        an_array = np.array(ans)
-
-        ans3 = an_array.flatten().tolist()
-
-        return ans3, dist
+        return ans, dist
 
     def centerPoint(self) -> (int, float):
         max_center=1000000000.1

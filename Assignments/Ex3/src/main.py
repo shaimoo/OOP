@@ -1,3 +1,5 @@
+import switch as switch
+
 from DiGraph import DiGraph
 from GraphAlgo import GraphAlgo
 
@@ -20,7 +22,7 @@ def check():
     check0()
     check1()
     check2()
-
+    check3()
 
 def check0():
     """
@@ -108,3 +110,37 @@ def check3():
 
 if __name__ == '__main__':
     check()
+
+    x=input("hello you have few options  \n* click -1 to exit  \n* for load file anter  0 and then anter the full path \n* for save changes anter  1 and the namefile  "
+          "\n* for the shorters path anter  2  then source and dest node \n* for build Empty graph you need to click 3 and anter node by node with space "
+         "\n* for add edege click 4 and anter source dest and weith \n* for TSP anter 5 and the list \n* for center node anter 6"
+          "\n* for remove node anter 7 and the node id \n* for for remove add anter 8 and the src and dest "
+          "\n* for show the graph anter 9 " )
+    g=GraphAlgo()
+    while x[0] != -1 :
+        if x[0] == 0 :
+            g.load_from_json(x[1])
+        if x[0] == 1:
+            g.save_to_json(x[1])
+        if x[0] == 2:
+            print(str(g.shortest_path(int(x[1]),int(x[2]))))
+        if x[0]== 3:
+            g = GraphAlgo()
+            for node in range(1,len(x)+1):
+                g.graph.add_edge(node)
+        if x[0] == 4:
+            g.graph.add_edge(x[1],x[2],x[3])
+        if x[0] == 5:
+            mylist=[]
+            for node in range(1, len(x) + 1):
+                mylist.append(node)
+            print(str(g.TSP(mylist)))
+
+        if x[0] == 6:
+            print(str(g.centerPoint()))
+        if x[0] == 7:
+            g.graph.remove_node(x[1])
+        if x[0] == 8:
+            g.graph.remove_edge(x[1],x[2])
+        if x[0] == 9 :
+            g.plot_graph()
