@@ -28,8 +28,8 @@ convert our EX2 at java to python and we compared the result.
   |remove_edge(self, node_id1: int, node_id2: int)|Removes an edge from the graph.return: True if the edge was removed successfully, False o.w.|
   
 ### GraphAlgo  <br />
-  this class implements GraphAlgointerface interface .
-  
+  this class implements GraphAlgointerface interface .<br />
+  ![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/dijkstra.jpeg "jijkstra")
  | Name of function | Description |
  |------------------|-------------|
  | get_graph(self)       | return the directed graph on which the algorithm works on. |
@@ -48,10 +48,10 @@ convert our EX2 at java to python and we compared the result.
    Choose the Download ZIP option from the Code pull-down menu. That ZIP file will contain the entire repository content.
   ## how to use  <br />
 - After you download the task at zip you need to extract  the zip file , then you need 
-  to open pycharm and run the main file .....
+  to open pycharm and run the main file,then you need to start the main and the prog will start . 
 
  # tests <br />
- ### test_DiGraph <br />
-- we chack every function with exmples to see the correctness of the function.
+ ### test_DiGraph and Test_AlgoGraph <br />
+- we chack every function with exmples to see the correctness of the function.also we check if we can show the graph like in the picture. <br />
+  ![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/graph.png "test")
 
- ###
