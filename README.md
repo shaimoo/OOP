@@ -53,7 +53,7 @@ convert our EX2 at java to python and we compared the result.
  # tests <br />
  ### test_DiGraph and Test_AlgoGraph <br />
 - we chack every function with exmples to see the correctness of the function.also we check if we can show the graph like in the picture. <br />
-  ![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/graph.png "test")
-- we check the Tsp func by this Graph
-![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/tsp.jpeg "jijkstra")
+  ![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/graph.png "test")  <br />
+- we check the Tsp func by this Graph  <br />
+![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/tsp.jpeg "jijkstra") 
 
