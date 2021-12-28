@@ -29,7 +29,7 @@ convert our EX2 at java to python and we compared the result.
   
 ### GraphAlgo  <br />
   this class implements GraphAlgointerface interface .<br />
-  ![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/dijkstra.jpeg "jijkstra")
+
  | Name of function | Description |
  |------------------|-------------|
  | get_graph(self)       | return the directed graph on which the algorithm works on. |
@@ -37,7 +37,7 @@ convert our EX2 at java to python and we compared the result.
  |  isConnected(self) | return if the graph is conect or no |
  | load_from_json(self, file_name: str)      | returns True if the loading was successful, False o.w. |
  |  save_to_json(self, file_name: str)      |  returns True if the loading was successful, False o.w. |
- |   shortest_path(self, id1: int, id2: int)       | using dijkstra algorithm . returns The distance of the path, a list of the nodes ids that the path goes through |
+ |   shortest_path(self, id1: int, id2: int)       | using dijkstra algorithm . returns The distance of the path, a list of the nodes ids that the path goes through.   ![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/dijkstra.jpeg "jijkstra") |
  | TSP(self, node_lst: List[int])     |  A list of the nodes id's in the path, and the overall distance |
  |  centerPoint(self)    | return The nodes id, min-maximum distance | 
  |  plot_graph(self)     |  If the nodes have a position, the nodes will be placed there.Otherwise, they will be placed in a random but elegant manner.return: None |
@@ -54,4 +54,6 @@ convert our EX2 at java to python and we compared the result.
  ### test_DiGraph and Test_AlgoGraph <br />
 - we chack every function with exmples to see the correctness of the function.also we check if we can show the graph like in the picture. <br />
   ![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/graph.png "test")
+- we check the Tsp func by this Graph
+![Alt text](https://github.com/shaimoo/OOP/blob/main/picture/tsp.jpeg "jijkstra")
 
