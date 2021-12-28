@@ -15,6 +15,8 @@ class My_NodeData():
             self.Tag = 0
             self.Info = " "
 
+    def __str__(self):
+        return " Node:"+self.key
 
     def getInfo(self) -> str:
         return self.Info

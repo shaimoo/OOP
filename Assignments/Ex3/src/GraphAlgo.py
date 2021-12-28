@@ -17,14 +17,13 @@ from Assignments.Ex3.src.GraphInterface import GraphInterface
 
 class GraphAlgo(GraphAlgoInterface):
 
-    def __init__(self, graph: DiGraph = DiGraph()):
-
+    def __init__(self, g=DiGraph):
+        if g is None:
            self.graph=DiGraph()
-
+        else:
+            self.graph = g
 
     def get_graph(self) -> GraphInterface:
-
-
         return self.graph
 
 
