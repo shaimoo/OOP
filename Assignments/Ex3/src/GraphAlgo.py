@@ -207,18 +207,17 @@ class GraphAlgo(GraphAlgoInterface):
         dist = 0
         if len(node_lst) > 0:
             ans.append(node_lst[0])
-            start=node_lst[0]
-            node_lst_len = len(node_lst)+1
+            start = node_lst[0]
+            node_lst_len = len(node_lst) + 2
             for i in range(1, node_lst_len):
-                result = x.shortest_path(start,i)
+                result = x.shortest_path(start, i)
                 an = result[1]
-                dist+=result[0]
+                dist += result[0]
                 start = i
                 for j in an[1:]:
                     ans.append(j)
 
         return ans, dist
-
     def centerPoint(self) -> (int, float):
         max_center=1000000000.1
         center=1000000000.1

@@ -103,14 +103,15 @@ def check3():
     g.add_edge(3, 4, 2.1)
     g.add_edge(4, 2, .5)
     g_algo = GraphAlgo(g)
+    print("$$")
     print(g_algo.centerPoint())
+    print("$$")
     print(g_algo.TSP([1, 2, 4]))
     g_algo.plot_graph()
 
 
 if __name__ == '__main__':
     check()
-
     x=input("hello you have few options  \n* click -1 to exit  \n* for load file anter  0 and then anter the full path \n* for save changes anter  1 and the namefile  "
           "\n* for the shorters path anter  2  then source and dest node \n* for build Empty graph you need to click 3 and anter node by node with space "
          "\n* for add edege click 4 and anter source dest and weith \n* for TSP anter 5 and the list \n* for center node anter 6"
